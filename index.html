@@ -24,21 +24,38 @@ p {
 <p id="cd"></p>
 
 <script>
-var countDownDate = new Date("Feb 06, 2025 11:00:00").getTime();
-var x = setInterval(function() {
-  var now = new Date().getTime();
-  var distance = countDownDate - now;
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  document.getElementById("cd").innerHTML = days + "d " + hours + "h "
+
+  function getNextCountdown() {
+    const now = new Date();
+    const target = new Date();
+    target.setHours(11, 0, 0, 0);
+    if (now > target) {
+        target.setDate(target.getDate() + 1);
+    }
+    return target.getTime();
+}
+
+let countDownDate = getNextCountdown();
+
+const x = setInterval(function() {
+  const now = new Date().getTime();
+  const distance = countDownDate - now;
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  if (distance >= 0) {
+    document.getElementById("cd").innerHTML = days + "d " + hours + "h "
   + minutes + "m " + seconds + "s ";
+  }
     
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("cd").innerHTML = '<img width=300px src="./scr/coffeebreak.jpg">';
+  if (distance < 0 && now <= countDownDate + 15 * 60 * 1000) {
+    document.getElementById("cd").innerHTML = '<img width=300px src="./scr/coffee.jpeg">';
+  }
+
+  if (now > countDownDate + 2 * 60 * 1000) {
+    countDownDate = getNextCountdown();
   }
 }, 1000);
 </script>
