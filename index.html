@@ -51,10 +51,10 @@ const x = setInterval(function() {
   }
     
   if (distance < 0 && now <= countDownDate + 15 * 60 * 1000) {
-    document.getElementById("cd").innerHTML = '<img width=300px src="./scr/coffee.jpeg">';
+    document.getElementById("cd").innerHTML = '<img width=300px src="./scr/scr/coffeebreak.jpg">';
   }
 
-  if (now > countDownDate + 2 * 60 * 1000) {
+  if (now > countDownDate + 20 * 60 * 1000) {
     countDownDate = getNextCountdown();
   }
 }, 1000);
