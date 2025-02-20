@@ -7,14 +7,14 @@
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
         body {
-            background-color: #FFFFFF; 
-            color: #1a3440; 
+            background-color: #111;
+            color: #0f0;
             font-family: 'Orbitron', sans-serif;
             text-align: center;
         }
         
         #title h1, #title h2 {
-            text-shadow: 0 0 10px #00baba, 0 0 20px #34ffff;
+            text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
         }
         
         #container_clock {
@@ -24,9 +24,9 @@
             align-items: center;
             gap: 15px;
             padding: 15px;
-            background: #FFFFFF;
+            background: #222;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(26, 52, 64, 0.5);  
+            box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.3);
             max-width: 300px;
             margin: 20px auto;
         }
@@ -34,28 +34,29 @@
         #container_clock h2 {
             font-size: 22px;
             margin: 0;
-            color: #1a3440; 
         }
         
         #container_clock span {
-            font-size: 32px; 
-            padding: 10px 15px; 
-            color: #1a3440;  
-            border-radius: 5px;  
+            font-size: 32px;
+            border: 2px solid #0f0;
+            padding: 10px 15px;
+            background-color: #000;
+            color: #0f0;
+            border-radius: 5px;
+            text-shadow: 0 0 5px #0f0;
         }
         
         #cd {
             font-size: 40px;
             font-weight: bold;
-            color: #1a3440;
-            text-shadow: 0 0 10px #00baba, 0 0 20px #34ffff;
+            text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
             animation: blink 1s infinite alternate;
         }
         
         @keyframes blink {
             0% { opacity: 1; }
             100% { opacity: 0.8; }
-        }
+        }        
     </style>
 </head>
 <body>
@@ -69,6 +70,8 @@
     </div>
 
     <p id="cd"></p>
+    
+
     <script>
         function clock() {
             var data = new Date();
@@ -107,8 +110,7 @@
                 document.getElementById("cd").innerHTML = days + "d " + hours + "h "
                     + minutes + "m " + seconds + "s ";
             } else if (now <= imageEndTime) {
-                document.getElementById("cd").innerHTML = '<img width=300px src="./scr/coffeebreak.jpg">';
-                document.getElementById("title").style.display = "none";
+                document.getElementById("cd").innerHTML = '<img width=300px src="./scr/coffeebreak.svg">';
             } else {
                 countDownDate = getNextCountdown(); 
             }
