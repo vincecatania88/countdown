@@ -88,7 +88,7 @@
         function getNextCountdown() {
             const now = new Date();
             const target = new Date();
-            target.setHours(16, 01, 0, 0);
+            target.setHours(11, 0, 0, 0);
             if (now > target) {
                 target.setDate(target.getDate() + 1);
             }
@@ -100,7 +100,7 @@
         setInterval(function() {
             const now = new Date().getTime();
             const distance = countDownDate - now;
-            const imageEndTime = countDownDate + 20 * 60 * 1000; 
+            const imageEndTime = countDownDate + 15 * 60 * 1000; 
 
             if (distance > 0) {
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
