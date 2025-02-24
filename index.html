@@ -29,11 +29,7 @@
             box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.3);
             max-width: 300px;
             margin: 20px auto;
-        }
-        
-        #container_clock h2 {
-            font-size: 22px;
-            margin: 0;
+            animation: blink 1s infinite alternate;
         }
         
         #container_clock span {
@@ -61,11 +57,10 @@
 </head>
 <body>
     <div id="container_clock">
-        <h2>Che ore sono?</h3>
         <span id="data"></span>
     </div>
     <div id="title">
-        <h1>Coffee Break ☕️</h1>
+        <h1>Coffee Break <img width="50px" src="./scr/tazzina.png" alt=""></h1>
         <h2>Tra...</h2>
     </div>
 
@@ -100,7 +95,7 @@
         setInterval(function() {
             const now = new Date().getTime();
             const distance = countDownDate - now;
-            const imageEndTime = countDownDate + 15 * 60 * 1000; 
+            const imageEndTime = countDownDate + 20 * 60 * 1000; 
 
             if (distance > 0) {
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -111,6 +106,7 @@
                     + minutes + "m " + seconds + "s ";
             } else if (now <= imageEndTime) {
                 document.getElementById("cd").innerHTML = '<img width=300px src="./scr/coffeebreak.svg">';
+                document.getElementById('title').style.display = "none";
             } else {
                 countDownDate = getNextCountdown(); 
             }
